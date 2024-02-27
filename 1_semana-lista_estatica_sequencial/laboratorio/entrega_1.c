@@ -60,7 +60,7 @@ void move_left(List *list, int idx)
 void _remove(List *list, int value)
 {
     if(is_empty(list))
-    return;
+      return;
 
     list->qtd -= 1;
 
