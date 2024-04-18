@@ -1,7 +1,4 @@
 #include "utils.h"
-#include <stdlib.h>
-#include <stdio.h>
-#include <time.h>
 
 char * recebe_nome()
 {
@@ -15,7 +12,7 @@ int recebe_idade()
 {
   int idade;
   
-  printf("Idade do Paciente: ");
+printf("Idade do Paciente: ");
   scanf("%d", &idade);
 
   return idade;
