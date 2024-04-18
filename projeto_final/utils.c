@@ -27,6 +27,7 @@ char * recebe_rg()
   
   printf("Rg do Paciente: ");
   scanf("%s", rg);
+  getchar();
 
   return rg;
 }

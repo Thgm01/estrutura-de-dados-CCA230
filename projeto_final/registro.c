@@ -23,8 +23,27 @@ void remove_registro(Registro *registro)
 
 void mostra_registro(Registro *registro)
 {
-    printf("Nome: %s\n", registro->nome);
-    printf("Idade: %d\n", registro->idade);
-    printf("RG: %s\n", registro->rg);
-    printf("%d/%d/%d\n", registro->entrada.dia, registro->entrada.mes, registro->entrada.ano);
+    if(registro != NULL)
+    {
+        printf("------------------------------\n");
+        printf("Nome: %s\n", registro->nome);
+        printf("Idade: %d\n", registro->idade);
+        printf("RG: %s\n", registro->rg);
+        printf("%d/%d/%d\n", registro->entrada.dia, registro->entrada.mes, registro->entrada.ano);
+        printf("------------------------------\n");
+    }
+    else
+    {
+        printf("Paciente Não Encontrado\n");
+    }
+}
+
+void mostra_nome(Registro *registro)
+{
+    printf(" - %s\n", registro->nome);
+}
+
+void mostra_rg(Registro *registro)
+{
+    printf(" - %s\n", registro->rg);
 }
