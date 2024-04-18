@@ -9,15 +9,4 @@
 Lista *le_arquivo();
 int salva_arquivo(Lista *lista);
 
-
-
-
-
 #endif // ARQUIVOS_H
-
-
-
-
-
-
-
