@@ -14,7 +14,7 @@ Registro *cria_registro()
     return novo_registro;
 }
 
-void remove_registro(Registro *registro)
+void limpa_registro(Registro *registro)
 {
     free(registro->nome);
     free(registro->rg);

@@ -13,7 +13,7 @@ ELista *cria_elemento_lista()
 
 void libera_elemento(ELista *elemento)  // Função para liberar a memoria alocada de um elemento (elemento = dados de um paciente na lista)
 {
-    remove_registro(elemento->dados);
+    limpa_registro(elemento->dados);
     free(elemento);
 }
 
@@ -76,15 +76,45 @@ void limpa_lista(Lista *lista) // Função para liberar a memória alocada da li
     free(lista);
 }
 
-Registro *acha_registro(Lista *lista, const char *info)
+ELista *acha_registro(Lista *lista, const char *info)
 {
     ELista *atual = lista->inicio;
 
-    while(strcmp(atual->dados->rg, info) != 0 && strcmp(atual->dados->nome, info))
+    while(strcmp(atual->dados->rg, info) != 0 && strcmp(atual->dados->nome, info) != 0)
     {
         atual = atual->proximo;
         if(atual == NULL) return NULL;
     }
-    return atual->dados;
+    return atual;
 } 
+
+int remove_registro(Lista *lista, const char *info)
+{
+    if(lista->qtd == 0) return 0;
+
+    ELista *atual = lista->inicio;
+    ELista *anterior = NULL;
+
+    while(strcmp(atual->dados->rg, info) != 0 && strcmp(atual->dados->nome, info) != 0 && atual!=NULL)
+    {
+        anterior = atual;
+        atual = anterior->proximo;
+    }
+    
+    if(atual==NULL) return 0;
+    else if(anterior == NULL)
+    {
+        lista->inicio = atual->proximo;
+    }
+    else
+    {
+        anterior->proximo = atual->proximo;
+    }
+
+    libera_elemento(atual);
+    lista->qtd --;
+
+    return 1;
+} // testar
+
 

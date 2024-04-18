@@ -18,7 +18,7 @@ typedef struct Registro
 }Registro;
 
 Registro *cria_registro();
-void remove_registro(Registro * registro);
+void limpa_registro(Registro * registro);
 void mostra_registro(Registro * registro);
 void mostra_nome(Registro * registro);
 void mostra_rg(Registro * registro);
