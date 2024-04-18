@@ -30,6 +30,8 @@ int main()
 
   mostra_lista(l, 0);
 
+  cadastrar_novo_paciente(l);
+
   salva_arquivo(l);
 
   return 0;

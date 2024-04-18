@@ -9,7 +9,7 @@ typedef struct Data
 }Data;
 
 
-typedef struct Registro
+typedef struct Registro //estrutura base do paciente
 {
     char *nome;
     int idade;

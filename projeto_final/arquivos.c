@@ -3,7 +3,7 @@
 #include "registro.h"
 
 
-Lista *le_arquivo()
+Lista *le_arquivo() // le arquivo com dados dos pacientes e adiciona em uma lista
 {
   FILE *arquivo = fopen("dados.txt", "r");
 
@@ -12,11 +12,12 @@ Lista *le_arquivo()
   Lista *cadastros = cria_lista();
   
   char buffer[200];
-  while(fgets(buffer, 100, arquivo) != NULL)
+  while(fgets(buffer, 100, arquivo) != NULL) //Enquanto não chegar no final do arquivo le as linhas
   {
     Registro *novo_registro = malloc(sizeof(Registro));
     
-    char *info = strtok(buffer, ";");
+    // le as informações dos pacientes e adiciona em um novo registro
+    char *info = strtok(buffer, ";"); //separa as informações
     char *nome = malloc(strlen(info) * sizeof(char));
     strcpy(nome, info);
     novo_registro->nome = nome;
@@ -48,10 +49,10 @@ Lista *le_arquivo()
 
   fclose(arquivo);
 
-  return cadastros;
+  return cadastros; // retorna a lista com todos os pacientes que estão no banco de dados
 }
 
-int salva_arquivo(Lista *lista)
+int salva_arquivo(Lista *lista) //salva novamente todos os dados dos pacientes em um arquivo
 {
   FILE *arquivo = fopen("dados.txt", "w");
 
@@ -68,5 +69,4 @@ int salva_arquivo(Lista *lista)
   fclose(arquivo);
   
   return 1;
-
 }
