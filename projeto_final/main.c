@@ -21,7 +21,7 @@ int main()
   char *rg = "0987";
   printf("\n\nRegistro com nome de: %s\n", rg);
 
-  mostra_registro(acha_registro(l, rg));
+  mostra_registro(acha_registro(l, rg)->dados);
 
   limpa_lista(l);
   return 0;
