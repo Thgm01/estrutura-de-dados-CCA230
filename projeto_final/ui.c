@@ -308,6 +308,15 @@ void cadastro_page()
     draw_botton_line(SIZE_MENU, 1);
 }
 
+void cadastrado_page()
+{
+    clear_screen();
+    draw_menu_header("Hospital Universitario FEI");
+    draw_line_cross(SIZE_MENU, 1);
+    center_text(SIZE_MENU, "PACIENTE CADASTRADO COM SUCESSO", 1);
+    draw_botton_line(SIZE_MENU, 1);
+}
+
 
 void get_opt(int *opt, const enum Pagina *pagina)
 {
@@ -330,7 +339,7 @@ void get_opt(int *opt, const enum Pagina *pagina)
         break;
     }
 
-    if (*pagina == SOBRE)
+    if (*pagina == SOBRE || *pagina == CADASTRO)
     {
         getchar();
         return;
@@ -371,6 +380,10 @@ void change_page(int *opt, enum Pagina *pagina)
 
     case SOBRE:
         *pagina = INICIAL;
+        break;
+
+    case CADASTRO:
+        *pagina = REGISTROS;
         break;
 
     default:

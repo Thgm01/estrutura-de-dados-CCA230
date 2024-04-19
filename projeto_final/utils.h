@@ -2,6 +2,7 @@
 #define UTILS_H
 
 #include "registro.h"
+#include "ui.h"
 
 #include <stdio.h>
 #include <stdlib.h>

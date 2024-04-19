@@ -28,6 +28,8 @@ int main()
 
       case CADASTRO:
         cadastro_page();
+        cadastrar_novo_paciente(pacientes);
+        cadastrado_page();
         break;
 
       case SOBRE:
@@ -47,7 +49,9 @@ int main()
   
   clear_screen();
   
+  salva_arquivo(pacientes);
 
+  libera_lista(pacientes);
   
   // // Lista *l = cria_lista();
 

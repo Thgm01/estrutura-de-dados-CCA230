@@ -67,6 +67,7 @@ void draw_registros_options();
 void initial_page();
 void registros_page();
 void cadastro_page();
+void cadastrado_page();
 
 void get_opt(int *opt, const enum Pagina *pagina);
 void change_page(int *opt, enum Pagina *pagina);

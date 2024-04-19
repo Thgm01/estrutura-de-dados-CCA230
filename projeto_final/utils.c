@@ -2,6 +2,7 @@
 
 char * recebe_nome()
 {
+  draw_spaces(SIZE_MENU/2 - 20);
   printf("Nome do Paciente: ");
   char * nome = stdin_dinamico();
 
@@ -11,8 +12,9 @@ char * recebe_nome()
 int recebe_idade()
 {
   int idade;
-  
-printf("Idade do Paciente: ");
+
+  draw_spaces(SIZE_MENU/2 - 20);
+  printf("Idade do Paciente: ");
   scanf("%d", &idade);
 
   return idade;
@@ -22,6 +24,7 @@ char * recebe_rg()
 {
   char *rg = malloc(11 * sizeof(char));
   
+  draw_spaces(SIZE_MENU/2 - 20);
   printf("Rg do Paciente: ");
   scanf("%s", rg);
   getchar();

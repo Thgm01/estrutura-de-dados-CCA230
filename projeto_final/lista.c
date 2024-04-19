@@ -60,7 +60,7 @@ void mostra_lista(Lista *lista, const int opt)
     }
 }
 
-void limpa_lista(Lista *lista) // Função para liberar a memória alocada da lista de registros
+void libera_lista(Lista *lista) // Função para liberar a memória alocada da lista de registros
 {
     ELista *atual = lista->inicio;
     if(atual == NULL) return;
