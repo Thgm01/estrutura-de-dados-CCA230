@@ -272,7 +272,7 @@ void draw_registros_options()
 {
     center_text(SIZE_MENU, "1 - Cadastrar Paciente ",1);
     center_text(SIZE_MENU, "2 - Mostrar Pacientes  ",1);
-    center_text(SIZE_MENU, "3 - Consultar Pacientes",1);
+    center_text(SIZE_MENU, "3 - Consultar Paciente ",1);
     center_text(SIZE_MENU, "4 - Atualizar Dados    ", 1);
     center_text(SIZE_MENU, "5 - Remover Paciente   ", 1);
     center_text(SIZE_MENU, "6 - Voltar             ", 1);
