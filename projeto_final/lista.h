@@ -29,7 +29,7 @@ void cadastrar_novo_paciente(Lista *lista);
 void mostra_lista(Lista *lista, const int opt);
 void limpa_lista(Lista *lista);
 
-ELista *acha_registro(Lista *lista, const char *info);
+Registro *acha_registro(Lista *lista, const char *info);
 int remove_registro(Lista *lista, const char *info);
 void edita_registro(ELista *registro, const int opt);
 

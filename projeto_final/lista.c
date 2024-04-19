@@ -63,6 +63,8 @@ void mostra_lista(Lista *lista, const int opt)
 void limpa_lista(Lista *lista) // Função para liberar a memória alocada da lista de registros
 {
     ELista *atual = lista->inicio;
+    if(atual == NULL) return;
+
     ELista *aux = atual->proximo;
 
     while(aux != NULL)
@@ -76,7 +78,7 @@ void limpa_lista(Lista *lista) // Função para liberar a memória alocada da li
     free(lista);
 }
 
-ELista *acha_registro(Lista *lista, const char *info)
+Registro *acha_registro(Lista *lista, const char *info)
 {
     ELista *atual = lista->inicio;
 
@@ -85,7 +87,7 @@ ELista *acha_registro(Lista *lista, const char *info)
         atual = atual->proximo;
         if(atual == NULL) return NULL;
     }
-    return atual;
+    return atual->dados;
 } 
 
 int remove_registro(Lista *lista, const char *info)

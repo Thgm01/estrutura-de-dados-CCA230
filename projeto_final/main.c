@@ -1,5 +1,6 @@
 #include "lista.h"
 #include "arquivos.h"
+#include "fila.h"
 
 int main()
 {
@@ -26,13 +27,34 @@ int main()
   // limpa_lista(l);
 
   Lista *l = le_arquivo();
+  Fila *f = cria_fila();
 
   mostra_lista(l, 0);
 
-  cadastrar_novo_paciente(l);
+  //cadastrar_novo_paciente(l);
+  enfileirar(f, acha_registro(l, "Thiago Moura"));
+  enfileirar(f, acha_registro(l, "Lucas Lagoeiro"));
+  //edita_registro(acha_registro(l, "1234"), 1);
+  
 
-  edita_registro(acha_registro(l, "1234"), 1);
-   
+  system("clear");
+
+  mostra_fila(f);
+
+  getchar();
+
+  system("clear");
+
+  mostra_registro(desenfileirar(f));
+
+  getchar();
+
+  system("clear");
+
+  mostra_fila(f);
+
+  libera_fila(f); 
+  
   salva_arquivo(l);
 
   return 0;
