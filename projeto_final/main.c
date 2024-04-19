@@ -11,7 +11,7 @@ int main()
   Lista *pacientes = le_arquivo();
 
   int opt = 1;
-  enum Pagina pagina = CADASTRO;
+  enum Pagina pagina = INICIAL;
 
   do
   {

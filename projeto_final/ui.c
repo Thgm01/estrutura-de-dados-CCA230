@@ -345,8 +345,14 @@ void get_opt(int *opt, const enum Pagina *pagina)
         return;
     }
 
-    if(*opt < lim[0] || *opt > lim[1]) printf("OPÇÃO INVALIDA!\n");
+    
+    if(*opt < lim[0] || *opt > lim[1])
+    {
+        draw_spaces(SIZE_MENU/2 - 15/2);
+        printf("OPÇÃO INVALIDA!\n");
+    }
 
+    draw_spaces(SIZE_MENU/2 - 7);
     printf("OPÇÂO: ");
     scanf("%d", opt);
     getchar();
