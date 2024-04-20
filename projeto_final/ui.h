@@ -74,6 +74,7 @@ void registros_page();
 void cadastro_page();
 void cadastrado_page();
 void consultar_page();
+void atualizar_registro_page();
 void mostrar_todos_registros_header();
 
 void get_opt(int *opt, const enum Pagina *pagina);
@@ -87,10 +88,7 @@ void center_task_info(char *info, int end_line);
 
 void consultar_paciente(Lista *lista);
 void mostrar_todos_registros(Lista *lista);
-
-
-
-
+void atualizar_registro(Lista *lista);
 
 
 #endif

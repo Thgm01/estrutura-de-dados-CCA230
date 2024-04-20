@@ -101,7 +101,7 @@ int main()
 
 
   int opt = 1;
-  enum Pagina pagina = MOSTRAR_PACIENTES;
+  enum Pagina pagina = ATUALIZAR;
 
   do
   {
@@ -128,6 +128,10 @@ int main()
 
       case CONSULTAR:
         consultar_paciente(pacientes);
+        break;
+
+      case ATUALIZAR:
+        atualizar_registro(pacientes);
         break;
 
       case SOBRE:

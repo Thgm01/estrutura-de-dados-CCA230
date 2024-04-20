@@ -300,6 +300,14 @@ void draw_registros_options()
     center_text(SIZE_MENU, "6 - Voltar                 ", 1);
 }
 
+void editar_registro_page()
+{
+    center_text(SIZE_MENU, "1 - Editar Nome ",1);
+    center_text(SIZE_MENU, "2 - Editar Idade",1);
+    center_text(SIZE_MENU, "3 - Editar RG   ",1);
+    draw_botton_line(SIZE_MENU, 1);
+}
+
 void clear_screen()
 {
     system("clear");
@@ -370,7 +378,7 @@ void get_opt(int *opt, const enum Pagina *pagina)
         break;
     }
 
-    if (*pagina == SOBRE || *pagina == CADASTRO || *pagina == CONSULTAR || *pagina == MOSTRAR_PACIENTES)
+    if (*pagina == SOBRE || *pagina == CADASTRO || *pagina == CONSULTAR || *pagina == MOSTRAR_PACIENTES || *pagina == ATUALIZAR)
     {
         getchar();
         return;
@@ -422,6 +430,7 @@ void change_page(int *opt, enum Pagina *pagina)
     case CADASTRO:
     case CONSULTAR:
     case MOSTRAR_PACIENTES:
+    case ATUALIZAR:
         *pagina = REGISTROS;
         break;
 
@@ -590,14 +599,18 @@ void mostrar_todos_registros(Lista *lista)
     if(lista->qtd != 0)
     {
         ELista *atual = lista->inicio;
-        ELista *proximo = atual->proximo;
 
-        for(int i=0; i < (lista->qtd/2)+ (lista->qtd%2); i++)
+        for(int i=0; i < (lista->qtd/2)+(lista->qtd%2); i++)
         {
-            mostra_registro2(atual->dados, proximo->dados);
-        
-            atual = proximo->proximo;
-            proximo = atual->proximo;
+            Registro * paciente1 = atual->dados;
+            Registro * paciente2;
+            if(atual->proximo != NULL) paciente2 = atual->proximo->dados;
+            else paciente2 = NULL;
+            
+            mostra_registro2(paciente1, paciente2);
+
+            if(paciente2 == NULL) break;
+            atual = atual->proximo->proximo;
         }
     }
     
@@ -615,4 +628,41 @@ void mostrar_todos_registros_header()
     draw_blank_line(SIZE_MENU);
     draw_line_cross(SIZE_MENU, 1);
     draw_blank_line(SIZE_MENU);
+}
+
+void atualizar_registro(Lista *lista)
+{
+    atualizar_registro_page();
+
+    char *info;
+    draw_spaces(SIZE_MENU/2 - 12);
+    printf("Nome ou RG: ");
+    info = stdin_dinamico();
+
+    Registro *registro = acha_registro(lista, info);
+
+    if (registro == NULL)
+    {
+        printf("Paciente nao encontrado");
+        return;
+    }
+
+    draw_top_line(SIZE_MENU, 1);
+    draw_blank_line(SIZE_MENU);
+    mostra_registro2(registro, NULL);
+    draw_blank_line(SIZE_MENU);
+    draw_line_cross(SIZE_MENU, 1);
+    editar_registro_page();
+
+
+
+}
+
+void atualizar_registro_page()
+{
+    clear_screen();
+    draw_menu_header("Hospital Universitario FEI");
+    draw_line_cross(SIZE_MENU, 1);
+    center_text(SIZE_MENU, "EDITAR REGISTRO", 1);
+    draw_botton_line(SIZE_MENU, 1);
 }
