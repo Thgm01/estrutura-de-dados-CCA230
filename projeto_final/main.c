@@ -11,15 +11,16 @@ int main()
 
   Lista *pacientes = le_arquivo();
 
-  Registro *paciente = acha_registro(pacientes, "Thiago Moura");
-  Registro *paciente2 = acha_registro(pacientes, "Lucas Lagoeiro");
+  // Registro *paciente = acha_registro(pacientes, "Thiago Moura");
+  // Registro *paciente2 = acha_registro(pacientes, "Lucas Lagoeiro");
   
   
 
 
-  consultar_page();
-  mostra_registro2(paciente, NULL);
-  mostra_registro(paciente);
+  // consultar_page();
+  // mostra_registro2(paciente, paciente2);
+  // draw_botton_line(SIZE_MENU, 1);
+  // mostra_registro(paciente);
 
   // draw_top_line(SIZE_MENU, 1);
   // draw_top_registro(1);
@@ -95,50 +96,50 @@ int main()
   // new_line();
   // draw_registro_cross(1);
 
-  getchar();
+  //getchar();
 
 
 
-  // int opt = 1;
-  // enum Pagina pagina = INICIAL;
+  int opt = 1;
+  enum Pagina pagina = INICIAL;
 
-  // do
-  // {
+  do
+  {
 
-  //   switch (pagina)
-  //   {
-  //     case INICIAL:
-  //       initial_page();
-  //       break;
+    switch (pagina)
+    {
+      case INICIAL:
+        initial_page();
+        break;
       
-  //     case REGISTROS:
-  //       registros_page();
-  //       break;
+      case REGISTROS:
+        registros_page();
+        break;
 
-  //     case CADASTRO:
-  //       cadastro_page();
-  //       cadastrar_novo_paciente(pacientes);
-  //       cadastrado_page();
-  //       break;
+      case CADASTRO:
+        cadastro_page();
+        cadastrar_novo_paciente(pacientes);
+        cadastrado_page();
+        break;
 
-  //     case CONSULTAR:
-  //       consultar_paciente(pacientes);
-  //       break;
+      case CONSULTAR:
+        consultar_paciente(pacientes);
+        break;
 
-  //     case SOBRE:
-  //       authors_info();
-  //       break;
+      case SOBRE:
+        authors_info();
+        break;
 
-  //     default:
-  //       printf("Outra Pagina");
-  //       break;
-  //   }
+      default:
+        printf("Outra Pagina");
+        break;
+    }
 
-  //   get_opt(&opt, &pagina);
+    get_opt(&opt, &pagina);
 
-  //   change_page(&opt, &pagina);
+    change_page(&opt, &pagina);
 
-  // } while (opt != 5 || pagina != INICIAL);
+  } while (opt != 5 || pagina != INICIAL);
   
   clear_screen();
   

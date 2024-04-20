@@ -446,10 +446,11 @@ void consultar_paciente(Lista *lista)
         printf("Paciente %s nao encontrado\n", info);
         return;
     }
-
+    draw_top_line(SIZE_MENU, 1);
+    draw_blank_line(SIZE_MENU);
     mostra_registro2(registro, NULL);
-
-    mostra_registro(registro);
+    draw_blank_line(SIZE_MENU);
+    draw_botton_line(SIZE_MENU, 1);
 
     free(info);
 
@@ -459,15 +460,29 @@ void mostra_registro2(Registro *registro1, Registro *registro2) // terminar
 {
     int qtd = (registro2 == NULL) ?  1 : 2;
     draw_top_registro(qtd);
+    draw_space_registro(qtd);
     mostra_nome_registro(registro1, registro2);
+    draw_space_registro(qtd);
     draw_registro_cross(qtd);
+    draw_space_registro(qtd);
     draw_info_registros(registro1, registro2);
+    draw_space_registro(qtd);
+    draw_botton_registo(qtd);
+    draw_blank_line(SIZE_MENU);    
+  }
 
-    // mostra_informacoes_registro(registro1, registro2);
+void draw_space_registro(int qtd)
+{
+    draw_vertical_line(1);
+    center_text(SIZE_TASK, "",0);
 
-    // char buffer[SIZE_TASK];
-    // sprintf(dado, "Idade: %d", paciente->idade);
-    
+    if(qtd == 2)
+    {
+        center_text(SIZE_TASK, "",0);
+        draw_vertical_line(1);
+        new_line();
+    }
+    else draw_empty_registro();
 }
 
 void mostra_nome_registro(Registro *registro1, Registro *registro2)
@@ -476,7 +491,7 @@ void mostra_nome_registro(Registro *registro1, Registro *registro2)
 
     if(registro2 == NULL) draw_empty_registro();
     else draw_nome_registro(registro2->nome, 1);
-    
+
 }
 
 void draw_info_registros(Registro *registro1, Registro *registro2)

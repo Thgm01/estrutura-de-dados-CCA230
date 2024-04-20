@@ -56,6 +56,7 @@ void draw_blank_line(int length);
 void draw_top_registro(int qnt_tasks);
 void draw_nome_registro(char *nome, int end_line);
 void draw_empty_registro();
+void draw_space_registro(int qtd);
 void draw_spaces(int size);
 void draw_task_titles(int qnt_tasks, char ** titles);
 void draw_registro_cross(int qnt_tasks);
