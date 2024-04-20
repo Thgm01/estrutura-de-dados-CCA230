@@ -8,7 +8,7 @@
 #include "registro.h"
 
 #define SIZE_MENU 160
-#define SIZE_TASK SIZE_MENU/2 - 2
+#define SIZE_TASK (SIZE_MENU/2 - 2)
 
 #define RB "\e(0\x6a\e(B" // 188 Right Bottom corner
 #define RT "\e(0\x6b\e(B" // 187 Right Top corner
@@ -62,12 +62,11 @@ void draw_registro_cross(int qnt_tasks);
 void write_descriptions(int qnt_tasks, char ** descriptions);
 void write_date(int qnt_tasks, char ** inicial_dates, char** final_dates);
 void write_status(int qnt_tasks, int *status);
-void draw_botton_tasks(int qnt_tasks);
+void draw_botton_registo(int qnt_tasks);
 void clear_screen();
 
 void draw_initial_options();
 void draw_registros_options();
-
 
 void initial_page();
 void registros_page();
@@ -78,6 +77,11 @@ void consultar_page();
 void get_opt(int *opt, const enum Pagina *pagina);
 void change_page(int *opt, enum Pagina *pagina);
 void authors_info();
+void mostra_registro2(Registro *registro1, Registro *registro2);
+void mostra_nome_registro(Registro *registro1, Registro *registro2);
+void draw_info_registros(Registro *registro1, Registro *registro2);
+void center_task_info(char *info, int end_line);
+
 
 void consultar_paciente(Lista *lista);
 

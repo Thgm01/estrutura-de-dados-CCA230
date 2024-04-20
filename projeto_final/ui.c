@@ -166,7 +166,11 @@ void draw_nome_registro(char *nome, int end_line)
 
     center_text(SIZE_TASK, nome, 0);
 
-    if (end_line) draw_vertical_line(1);
+    if (end_line)
+    {
+        draw_vertical_line(1);
+        new_line();
+    }
 }
 
 void draw_empty_registro()
@@ -265,7 +269,7 @@ void write_status(int qnt_tasks, int *status) // 0 - a fazer, 1 - fazendo, 2 - T
     new_line();
 }
 
-void draw_botton_tasks(int qnt_tasks)
+void draw_botton_registo(int qnt_tasks)
 {
     draw_vertical_line(1);
     for(int i=0; i< qnt_tasks; i++)
@@ -443,11 +447,93 @@ void consultar_paciente(Lista *lista)
         return;
     }
 
+    mostra_registro2(registro, NULL);
+
     mostra_registro(registro);
 
     free(info);
 
 }
+
+void mostra_registro2(Registro *registro1, Registro *registro2) // terminar
+{
+    int qtd = (registro2 == NULL) ?  1 : 2;
+    draw_top_registro(qtd);
+    mostra_nome_registro(registro1, registro2);
+    draw_registro_cross(qtd);
+    draw_info_registros(registro1, registro2);
+
+    // mostra_informacoes_registro(registro1, registro2);
+
+    // char buffer[SIZE_TASK];
+    // sprintf(dado, "Idade: %d", paciente->idade);
+    
+}
+
+void mostra_nome_registro(Registro *registro1, Registro *registro2)
+{
+    draw_nome_registro(registro1->nome, 0);
+
+    if(registro2 == NULL) draw_empty_registro();
+    else draw_nome_registro(registro2->nome, 1);
+    
+}
+
+void draw_info_registros(Registro *registro1, Registro *registro2)
+{
+    char info[SIZE_TASK];
+
+    sprintf(info, "Idade: %d", registro1->idade);
+    center_task_info(info, 0);
+
+    if(registro2 != NULL)
+    {
+        sprintf(info, "Idade: %d", registro2->idade);
+        center_task_info(info, 1);
+    } 
+    else draw_empty_registro();
+
+
+    sprintf(info, "RG: %s", registro1->rg);
+    center_task_info(info, 0);
+
+    if(registro2 != NULL)
+    {
+        sprintf(info, "RG: %s", registro2->rg);
+        center_task_info(info, 1);
+    }   
+    else draw_empty_registro(); 
+
+
+    sprintf(info, "Entrada: %d/%d/%d", registro1->entrada.dia, registro1->entrada.mes, registro1->entrada.ano);
+    center_task_info(info, 0);
+
+    if(registro2 != NULL)
+    {
+        sprintf(info, "Entrada: %d/%d/%d", registro2->entrada.dia, registro2->entrada.mes, registro2->entrada.ano);
+        center_task_info(info, 1);
+    }   
+    else draw_empty_registro();
+}
+
+void center_task_info(char *info, int end_line)
+{
+    if(!end_line) draw_vertical_line(1);
+
+    draw_vertical_line(1);
+    draw_spaces(SIZE_TASK/2 - 5);
+    printf("%s", info);
+    draw_spaces(SIZE_TASK/2 + 5 - strlen(info));
+    draw_vertical_line(1);
+
+    if(end_line)
+    {
+        draw_vertical_line(1);
+        new_line();
+    }
+
+}
+
 
 void authors_info()
 {

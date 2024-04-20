@@ -12,34 +12,68 @@ int main()
   Lista *pacientes = le_arquivo();
 
   Registro *paciente = acha_registro(pacientes, "Thiago Moura");
-  consultar_page();
-  mostra_registro(paciente);
-  draw_top_line(SIZE_MENU, 1);
-  draw_top_registro(1);
-
-
-  draw_nome_registro(paciente->nome, 0);
-  draw_empty_registro();
-  draw_registro_cross(1);
-
-  char dado[SIZE_TASK];
-
-  draw_vertical_line(1);
-  sprintf(dado, "Idade: %d", paciente->idade);
-  center_text(SIZE_TASK, dado, 0);
-  draw_empty_registro();
-
-  draw_vertical_line(1);
-  sprintf(dado, "RG: %s", paciente->rg);
-  center_text(SIZE_TASK, dado, 0);
-  draw_empty_registro();
-
-  draw_vertical_line(1);
-  sprintf(dado, "%d/%d/%d", paciente->entrada.dia, paciente->entrada.mes, paciente->entrada.ano);
-  center_text(SIZE_TASK, dado, 0);
-  draw_empty_registro();
-
+  Registro *paciente2 = acha_registro(pacientes, "Lucas Lagoeiro");
   
+  
+
+
+  consultar_page();
+  mostra_registro2(paciente, NULL);
+  mostra_registro(paciente);
+
+  // draw_top_line(SIZE_MENU, 1);
+  // draw_top_registro(1);
+
+
+  // draw_nome_registro(paciente->nome, 0);
+  // draw_empty_registro();
+  // draw_registro_cross(1);
+
+  // char dado[SIZE_TASK];
+
+
+  // draw_vertical_line(1);
+  // sprintf(dado, "Idade: %d", paciente->idade);
+  // draw_vertical_line(1);
+  // draw_spaces(SIZE_TASK/2 - 5);
+  // printf("%s", dado);
+  // draw_spaces(SIZE_TASK/2 + 5 - strlen(dado));
+  // draw_vertical_line(1);
+  // draw_empty_registro();
+
+  // draw_vertical_line(1);
+  // sprintf(dado, "RG: %s", paciente->rg);
+  // draw_vertical_line(1);
+  // draw_spaces(SIZE_TASK/2 - 5);
+  // printf("%s", dado);
+  // draw_spaces(SIZE_TASK/2 + 5 - strlen(dado));
+  // draw_vertical_line(1);
+  // draw_empty_registro();
+
+  // draw_vertical_line(1);
+  // sprintf(dado, "Entrada: %d/%d/%d", paciente->entrada.dia, paciente->entrada.mes, paciente->entrada.ano);
+  // draw_vertical_line(1);
+  // draw_spaces(SIZE_TASK/2 - 5);
+  // printf("%s", dado);
+  // draw_spaces(SIZE_TASK/2 + 5 - strlen(dado));
+  // draw_vertical_line(1);
+  // draw_empty_registro();
+
+  // draw_botton_registo(2);
+
+
+
+  // draw_vertical_line(1);
+  // sprintf(dado, "RG: %s", paciente->rg);
+  // center_text(SIZE_TASK, dado, 0);
+  // draw_empty_registro();
+
+  // draw_vertical_line(1);
+  // sprintf(dado, "%d/%d/%d", paciente->entrada.dia, paciente->entrada.mes, paciente->entrada.ano);
+  // center_text(SIZE_TASK, dado, 0);
+  // draw_empty_registro();
+
+
 
 
   
