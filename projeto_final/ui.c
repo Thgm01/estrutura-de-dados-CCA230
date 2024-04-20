@@ -422,9 +422,8 @@ void consultar_paciente(Lista *lista)
     
     if(registro == NULL)
     {
-        draw_spaces(SIZE_MENU/2 - (25+strlen(info))/2);
+        draw_spaces(SIZE_MENU/2 - (24+strlen(info))/2);
         printf("Paciente %s nao encontrado\n", info);
-        getchar();
         return;
     }
 
