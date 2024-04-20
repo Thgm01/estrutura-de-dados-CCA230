@@ -11,29 +11,29 @@ void draw_menu_header(char* title)
     draw_blank_line(SIZE_MENU);
 }
 
-void draw_tasks(int qnt_tasks, char ** titles, char **descriptions, char **initial_dates, char **final_dates, int *status)
-{
-    if(qnt_tasks == 0)
-    {
-        draw_blank_line(SIZE_MENU);
-        center_text(SIZE_MENU, "Nenhuma Tarefa!", 1);
-        draw_blank_line(SIZE_MENU);
-        draw_blank_line(SIZE_MENU);
-    }
-    else 
-    {
-        draw_top_tasks(qnt_tasks);
-        draw_task_titles(qnt_tasks, titles);
-        draw_tasks_cross(qnt_tasks);
-        write_descriptions(qnt_tasks, descriptions);
-        draw_tasks_cross(qnt_tasks);
-        write_date(qnt_tasks, initial_dates, final_dates);
-        draw_tasks_cross(qnt_tasks);
-        write_status(qnt_tasks, status);
-        draw_botton_tasks(qnt_tasks);
-        draw_blank_line(SIZE_MENU);
-    }
-}
+// void draw_tasks(int qnt_tasks, char ** titles, char **descriptions, char **initial_dates, char **final_dates, int *status)
+// {
+//     if(qnt_tasks == 0)
+//     {
+//         draw_blank_line(SIZE_MENU);
+//         center_text(SIZE_MENU, "Nenhuma Tarefa!", 1);
+//         draw_blank_line(SIZE_MENU);
+//         draw_blank_line(SIZE_MENU);
+//     }
+//     else 
+//     {
+//         draw_top_tasks(qnt_tasks);
+//         draw_task_titles(qnt_tasks, titles);
+//         draw_tasks_cross(qnt_tasks);
+//         write_descriptions(qnt_tasks, descriptions);
+//         draw_tasks_cross(qnt_tasks);
+//         write_date(qnt_tasks, initial_dates, final_dates);
+//         draw_tasks_cross(qnt_tasks);
+//         write_status(qnt_tasks, status);
+//         draw_botton_tasks(qnt_tasks);
+//         draw_blank_line(SIZE_MENU);
+//     }
+// }
 
 void draw_initial_menu_options()
 {
@@ -148,7 +148,7 @@ void draw_blank_line(int length)
     new_line();
 }
 
-void draw_top_tasks(int qnt_tasks)
+void draw_top_registro(int qnt_tasks)
 {
     draw_vertical_line(1);
     for(int i=0; i< qnt_tasks; i++)
@@ -156,6 +156,22 @@ void draw_top_tasks(int qnt_tasks)
         draw_top_line(SIZE_TASK, 0);
     }
     draw_spaces(160 - (SIZE_TASK+2)*qnt_tasks);
+    draw_vertical_line(1);
+    new_line();
+}
+
+void draw_nome_registro(char *nome, int end_line)
+{
+    if(!end_line) draw_vertical_line(1);
+
+    center_text(SIZE_TASK, nome, 0);
+
+    if (end_line) draw_vertical_line(1);
+}
+
+void draw_empty_registro()
+{
+    draw_spaces(160 - (SIZE_TASK+2));
     draw_vertical_line(1);
     new_line();
 }
@@ -177,7 +193,7 @@ void draw_task_titles(int qnt_tasks, char ** titles)
     new_line();
 }
 
-void draw_tasks_cross(int qnt_tasks)
+void draw_registro_cross(int qnt_tasks)
 {
     draw_vertical_line(1);
     for(int i=0; i<qnt_tasks; i++)

@@ -40,7 +40,7 @@ enum Pagina
 };
 
 void draw_menu_header(char* title);
-void draw_tasks(int qnt_tasks, char ** titles, char **descriptions, char **initial_dates, char **final_dates, int *status);
+// void draw_tasks(int qnt_tasks, char ** titles, char **descriptions, char **initial_dates, char **final_dates, int *status);
 
 void draw_initial_menu_options();
 void draw_registros_menu_options();
@@ -53,10 +53,12 @@ void draw_line_cross(int length, int end_line);
 void center_text(int length, char* text, int end_line);
 void draw_vertical_line(int length);
 void draw_blank_line(int length);
-void draw_top_tasks(int qnt_tasks);
+void draw_top_registro(int qnt_tasks);
+void draw_nome_registro(char *nome, int end_line);
+void draw_empty_registro();
 void draw_spaces(int size);
 void draw_task_titles(int qnt_tasks, char ** titles);
-void draw_tasks_cross(int qnt_tasks);
+void draw_registro_cross(int qnt_tasks);
 void write_descriptions(int qnt_tasks, char ** descriptions);
 void write_date(int qnt_tasks, char ** inicial_dates, char** final_dates);
 void write_status(int qnt_tasks, int *status);

@@ -4,52 +4,107 @@
 #include "ui.h"
 
 #include <stdlib.h>
+#include <string.h>
 
 int main()
 {
 
   Lista *pacientes = le_arquivo();
 
-  int opt = 1;
-  enum Pagina pagina = INICIAL;
+  Registro *paciente = acha_registro(pacientes, "Thiago Moura");
+  consultar_page();
+  mostra_registro(paciente);
+  draw_top_line(SIZE_MENU, 1);
+  draw_top_registro(1);
 
-  do
-  {
 
-    switch (pagina)
-    {
-      case INICIAL:
-        initial_page();
-        break;
+  draw_nome_registro(paciente->nome, 0);
+  draw_empty_registro();
+  draw_registro_cross(1);
+
+  char dado[SIZE_TASK];
+
+  draw_vertical_line(1);
+  sprintf(dado, "Idade: %d", paciente->idade);
+  center_text(SIZE_TASK, dado, 0);
+  draw_empty_registro();
+
+  draw_vertical_line(1);
+  sprintf(dado, "RG: %s", paciente->rg);
+  center_text(SIZE_TASK, dado, 0);
+  draw_empty_registro();
+
+  draw_vertical_line(1);
+  sprintf(dado, "%d/%d/%d", paciente->entrada.dia, paciente->entrada.mes, paciente->entrada.ano);
+  center_text(SIZE_TASK, dado, 0);
+  draw_empty_registro();
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+  
+
+  // draw_vertical_line(1);
+  // center_text(SIZE_TASK, paciente->nome, 0);
+  // draw_spaces(160 - (SIZE_TASK+2));
+  // draw_vertical_line(1);
+  // new_line();
+  // draw_registro_cross(1);
+
+  getchar();
+
+
+
+  // int opt = 1;
+  // enum Pagina pagina = INICIAL;
+
+  // do
+  // {
+
+  //   switch (pagina)
+  //   {
+  //     case INICIAL:
+  //       initial_page();
+  //       break;
       
-      case REGISTROS:
-        registros_page();
-        break;
+  //     case REGISTROS:
+  //       registros_page();
+  //       break;
 
-      case CADASTRO:
-        cadastro_page();
-        cadastrar_novo_paciente(pacientes);
-        cadastrado_page();
-        break;
+  //     case CADASTRO:
+  //       cadastro_page();
+  //       cadastrar_novo_paciente(pacientes);
+  //       cadastrado_page();
+  //       break;
 
-      case CONSULTAR:
-        consultar_paciente(pacientes);
-        break;
+  //     case CONSULTAR:
+  //       consultar_paciente(pacientes);
+  //       break;
 
-      case SOBRE:
-        authors_info();
-        break;
+  //     case SOBRE:
+  //       authors_info();
+  //       break;
 
-      default:
-        printf("Outra Pagina");
-        break;
-    }
+  //     default:
+  //       printf("Outra Pagina");
+  //       break;
+  //   }
 
-    get_opt(&opt, &pagina);
+  //   get_opt(&opt, &pagina);
 
-    change_page(&opt, &pagina);
+  //   change_page(&opt, &pagina);
 
-  } while (opt != 5 || pagina != INICIAL);
+  // } while (opt != 5 || pagina != INICIAL);
   
   clear_screen();
   
@@ -57,6 +112,10 @@ int main()
 
   libera_lista(pacientes);
   
+
+
+
+
   // // Lista *l = cria_lista();
 
   // // cadastrar_novo_paciente(l);
