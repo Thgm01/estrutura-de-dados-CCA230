@@ -4,6 +4,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "lista.h"
+#include "registro.h"
+
 #define SIZE_MENU 160
 #define SIZE_TASK SIZE_MENU/2 - 2
 
@@ -68,11 +71,13 @@ void initial_page();
 void registros_page();
 void cadastro_page();
 void cadastrado_page();
+void consultar_page();
 
 void get_opt(int *opt, const enum Pagina *pagina);
 void change_page(int *opt, enum Pagina *pagina);
 void authors_info();
 
+void consultar_paciente(Lista *lista);
 
 
 

@@ -6,7 +6,6 @@
 #include <string.h>
 
 #include "registro.h"
-#include "utils.h"
 
 typedef struct ELista
 {

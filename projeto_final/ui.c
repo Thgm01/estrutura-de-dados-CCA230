@@ -1,5 +1,7 @@
-#include "utils.h"
 #include "ui.h"
+
+#include "utils.h"
+#include "lista.h"
 
 void draw_menu_header(char* title)
 {
@@ -317,6 +319,15 @@ void cadastrado_page()
     draw_botton_line(SIZE_MENU, 1);
 }
 
+void consultar_page()
+{
+    clear_screen();
+    draw_menu_header("Hospital Universitario FEI");
+    draw_line_cross(SIZE_MENU, 1);
+    center_text(SIZE_MENU, "PESQUISAR PACIENTE", 1);
+    draw_botton_line(SIZE_MENU, 1);
+}
+
 
 void get_opt(int *opt, const enum Pagina *pagina)
 {
@@ -339,7 +350,7 @@ void get_opt(int *opt, const enum Pagina *pagina)
         break;
     }
 
-    if (*pagina == SOBRE || *pagina == CADASTRO)
+    if (*pagina == SOBRE || *pagina == CADASTRO || *pagina == CONSULTAR)
     {
         getchar();
         return;
@@ -389,12 +400,38 @@ void change_page(int *opt, enum Pagina *pagina)
         break;
 
     case CADASTRO:
+    case CONSULTAR:
         *pagina = REGISTROS;
         break;
 
     default:
         break;
     }
+}
+
+void consultar_paciente(Lista *lista)
+{
+    consultar_page();
+
+    char *info;
+    draw_spaces(SIZE_MENU/2 - 12);
+    printf("Nome ou RG: ");
+    info = stdin_dinamico();
+
+    Registro *registro = acha_registro(lista, info);
+    
+    if(registro == NULL)
+    {
+        draw_spaces(SIZE_MENU/2 - (25+strlen(info))/2);
+        printf("Paciente %s nao encontrado\n", info);
+        getchar();
+        return;
+    }
+
+    mostra_registro(registro);
+
+    free(info);
+
 }
 
 void authors_info()

@@ -1,6 +1,9 @@
 #include "lista.h"
 
 
+#include "utils.h"
+
+
 ELista *cria_elemento_lista()
 {
     ELista *novo_elemento =  malloc(sizeof(ELista));

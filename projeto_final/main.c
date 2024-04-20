@@ -32,6 +32,10 @@ int main()
         cadastrado_page();
         break;
 
+      case CONSULTAR:
+        consultar_paciente(pacientes);
+        break;
+
       case SOBRE:
         authors_info();
         break;
