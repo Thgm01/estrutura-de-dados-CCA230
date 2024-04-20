@@ -101,7 +101,7 @@ int main()
 
 
   int opt = 1;
-  enum Pagina pagina = INICIAL;
+  enum Pagina pagina = MOSTRAR_PACIENTES;
 
   do
   {
@@ -120,6 +120,10 @@ int main()
         cadastro_page();
         cadastrar_novo_paciente(pacientes);
         cadastrado_page();
+        break;
+
+      case MOSTRAR_PACIENTES:
+        mostrar_todos_registros(pacientes);
         break;
 
       case CONSULTAR:

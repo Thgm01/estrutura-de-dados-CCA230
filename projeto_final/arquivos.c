@@ -45,6 +45,9 @@ Lista *le_arquivo() // le arquivo com dados dos pacientes e adiciona em uma list
 
     paciente->proximo = cadastros->inicio;
     cadastros->inicio = paciente;
+
+    cadastros->qtd++;
+
   }
 
   fclose(arquivo);

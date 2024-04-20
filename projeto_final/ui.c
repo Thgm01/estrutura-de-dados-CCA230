@@ -292,12 +292,12 @@ void draw_initial_options()
 
 void draw_registros_options()
 {
-    center_text(SIZE_MENU, "1 - Cadastrar Paciente ",1);
-    center_text(SIZE_MENU, "2 - Mostrar Pacientes  ",1);
-    center_text(SIZE_MENU, "3 - Consultar Paciente ",1);
-    center_text(SIZE_MENU, "4 - Atualizar Dados    ", 1);
-    center_text(SIZE_MENU, "5 - Remover Paciente   ", 1);
-    center_text(SIZE_MENU, "6 - Voltar             ", 1);
+    center_text(SIZE_MENU, "1 - Cadastrar Paciente     ",1);
+    center_text(SIZE_MENU, "2 - Mostrar Todos Pacientes",1);
+    center_text(SIZE_MENU, "3 - Consultar Paciente     ",1);
+    center_text(SIZE_MENU, "4 - Atualizar Dados        ", 1);
+    center_text(SIZE_MENU, "5 - Remover Paciente       ", 1);
+    center_text(SIZE_MENU, "6 - Voltar                 ", 1);
 }
 
 void clear_screen()
@@ -370,7 +370,7 @@ void get_opt(int *opt, const enum Pagina *pagina)
         break;
     }
 
-    if (*pagina == SOBRE || *pagina == CADASTRO || *pagina == CONSULTAR)
+    if (*pagina == SOBRE || *pagina == CADASTRO || *pagina == CONSULTAR || *pagina == MOSTRAR_PACIENTES)
     {
         getchar();
         return;
@@ -421,6 +421,7 @@ void change_page(int *opt, enum Pagina *pagina)
 
     case CADASTRO:
     case CONSULTAR:
+    case MOSTRAR_PACIENTES:
         *pagina = REGISTROS;
         break;
 
@@ -579,4 +580,39 @@ void authors_info()
     center_text(SIZE_TASK, "Presione qualquer tecla para voltar (menos Crtl+C)", 1);
     draw_blank_line(SIZE_TASK);
     draw_botton_line(SIZE_TASK, 1);
+}
+
+void mostrar_todos_registros(Lista *lista)
+{
+    clear_screen();
+    mostrar_todos_registros_header();
+
+    if(lista->qtd != 0)
+    {
+        ELista *atual = lista->inicio;
+        ELista *proximo = atual->proximo;
+
+        for(int i=0; i < (lista->qtd/2)+ (lista->qtd%2); i++)
+        {
+            mostra_registro2(atual->dados, proximo->dados);
+        
+            atual = proximo->proximo;
+            proximo = atual->proximo;
+        }
+    }
+    
+    draw_botton_line(SIZE_MENU, 1);
+
+
+
+}
+
+void mostrar_todos_registros_header()
+{
+    draw_top_line(SIZE_MENU, 1);
+    draw_blank_line(SIZE_MENU);
+    center_text(SIZE_MENU, "TODOS OS PACIENTES", 1);
+    draw_blank_line(SIZE_MENU);
+    draw_line_cross(SIZE_MENU, 1);
+    draw_blank_line(SIZE_MENU);
 }
