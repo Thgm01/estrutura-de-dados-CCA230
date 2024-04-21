@@ -35,6 +35,10 @@ enum Pagina
     REMOVER,
 
     ATENDIMENTOS,
+    ENFILEIRAR,
+    DESENFILEIRAR,
+    MOSTRAR_FILA,
+
     PESQUISA,
     SOBRE
 };
@@ -68,14 +72,22 @@ void clear_screen();
 
 void draw_initial_options();
 void draw_registros_options();
+void atendimento_menu_options();
+
 
 void initial_page();
 void registros_page();
+void atendimentos_page();
 void cadastro_page();
 void cadastrado_page();
 void consultar_page();
 void atualizar_registro_page();
 void registro_atualizado_page();
+void remove_registro_page();
+void confirmar_remover_page();
+void registro_removido_page();
+void remocao_cancelada_page();
+
 void mostrar_todos_registros_header();
 
 void get_opt(int *opt, const enum Pagina *pagina);
@@ -90,6 +102,8 @@ void center_task_info(char *info, int end_line);
 void consultar_paciente(Lista *lista);
 void mostrar_todos_registros(Lista *lista);
 void atualizar_registro(Lista *lista);
+void remover_registro(Lista *lista);
+
 
 
 #endif

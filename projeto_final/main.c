@@ -134,6 +134,14 @@ int main()
         atualizar_registro(pacientes);
         break;
 
+      case REMOVER:
+        remover_registro(pacientes);
+        break;
+
+      case ATENDIMENTOS:
+        atendimentos_page();
+        break;
+
       case SOBRE:
         authors_info();
         break;
@@ -155,10 +163,6 @@ int main()
 
   libera_lista(pacientes);
   
-
-
-
-
   // // Lista *l = cria_lista();
 
   // // cadastrar_novo_paciente(l);
