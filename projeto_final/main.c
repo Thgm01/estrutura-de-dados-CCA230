@@ -144,8 +144,13 @@ int main()
         break;
 
       case ENFILEIRAR:
-        enfielirar_registro(pacientes, atendimentos);
+        enfileirar_registro(pacientes, atendimentos);
         break;
+
+      case DESENFILEIRAR:
+        desenfileirar_registro(pacientes, atendimentos);
+        break;
+
       case SOBRE:
         authors_info();
         break;

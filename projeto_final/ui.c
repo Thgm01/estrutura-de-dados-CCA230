@@ -317,7 +317,7 @@ void get_opt(int *opt, const enum Pagina *pagina)
         break;
     }
 
-    if (*pagina == SOBRE || *pagina == CADASTRO || *pagina == CONSULTAR || *pagina == MOSTRAR_PACIENTES || *pagina == ATUALIZAR || *pagina == REMOVER || *pagina == ENFILEIRAR)
+    if (*pagina == SOBRE || *pagina == CADASTRO || *pagina == CONSULTAR || *pagina == MOSTRAR_PACIENTES || *pagina == ATUALIZAR || *pagina == REMOVER || *pagina == ENFILEIRAR || *pagina == DESENFILEIRAR)
     {
         getchar();
         return;
@@ -377,6 +377,7 @@ void change_page(int *opt, enum Pagina *pagina)
         break;
     }
     case ENFILEIRAR:
+    case DESENFILEIRAR:
         *pagina = ATENDIMENTOS;
         break;
 
@@ -734,7 +735,7 @@ void confirmar_remover_page()
     draw_botton_line(SIZE_MENU, 1);
 }
 
-void enfielirar_registro(Lista *lista, Fila *fila)
+void enfileirar_registro(Lista *lista, Fila *fila)
 {
     consultar_page();
 
@@ -806,6 +807,70 @@ void enfileirar_page()
     draw_menu_header("Hospital Universitario FEI");
     draw_line_cross(SIZE_MENU, 1);
     center_text(SIZE_MENU, "ADICIONAR PACIENTE NA FILA", 1);
+    draw_botton_line(SIZE_MENU, 1);
+}
+
+void desenfileirar_registro(Lista *lista, Fila *fila)
+{
+    desenfileirar_page();
+    if(fila->qtd == 0)
+    {
+        center_text(SIZE_MENU, "FILA VAZIA", 1);
+        draw_blank_line(SIZE_MENU);
+        draw_botton_line(SIZE_MENU, 1);
+        return;
+    }
+
+    Registro *registro = fila->head->dados;
+
+    mostra_registro2(registro, NULL);
+    draw_line_cross(SIZE_MENU, 1);
+    draw_blank_line(SIZE_MENU);
+
+
+    char buffer[100];
+    sprintf(buffer, "Confirmar retirada do agendamento de %s da fila?", registro->nome);
+    center_text(SIZE_MENU, buffer, 1);
+    confirmar_remover_page();
+    
+    draw_spaces(SIZE_MENU/2 - 7);
+    int opt;
+    printf("OPÇÂO: ");
+    scanf("%d", &opt);
+    getchar();
+
+    if(opt == 1)
+    {
+        registro_desenfileirado_page();
+        desenfileirar(fila);
+        return;
+    }
+    else if(opt == 2) registro_desenfileirado_cancelado();
+}
+
+void desenfileirar_page()
+{
+    clear_screen();
+    draw_menu_header("Hospital Universitario FEI");
+    draw_line_cross(SIZE_MENU, 1);
+    draw_blank_line(SIZE_MENU);
+}
+
+void registro_desenfileirado_page()
+{
+    clear_screen();
+    draw_menu_header("Hospital Universitario FEI");
+    draw_line_cross(SIZE_MENU, 1);
+    center_text(SIZE_MENU, "PACIENTE REMOVIDO DA FILA", 1);
+    draw_botton_line(SIZE_MENU, 1);
+}
+
+void registro_desenfileirado_cancelado()
+{
+    clear_screen();
+    draw_menu_header("Hospital Universitario FEI");
+    draw_line_cross(SIZE_MENU, 1);
+    center_text(SIZE_MENU, "REMOCAO DO PACIENTE CANCELADA", 1);
     draw_botton_line(SIZE_MENU, 1);
 
 }
