@@ -101,7 +101,7 @@ int main()
 
 
   int opt = 1;
-  enum Pagina pagina = ATUALIZAR;
+  enum Pagina pagina = INICIAL;
 
   do
   {

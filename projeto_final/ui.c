@@ -653,9 +653,33 @@ void atualizar_registro(Lista *lista)
     draw_blank_line(SIZE_MENU);
     draw_line_cross(SIZE_MENU, 1);
     editar_registro_page();
+    draw_spaces(SIZE_MENU/2 - 7);
+    
+    int opt;
+    printf("OPÇÂO: ");
+    scanf("%d", &opt);
+    getchar();
+    
+    if(opt > 3 || opt < 1)
+    {
+        draw_spaces(SIZE_MENU/2 - 7);
+        printf("OPÇÃO INVALIDA\n");
+        return;
+    }
 
+    edita_registro(registro, opt);
 
+    registro_atualizado_page();
+    
+}
 
+void registro_atualizado_page()
+{
+    clear_screen();
+    draw_menu_header("Hospital Universitario FEI");
+    draw_line_cross(SIZE_MENU, 1);
+    center_text(SIZE_MENU, "DADOS ATUALIZADOS COM SUCESSO", 1);
+    draw_botton_line(SIZE_MENU, 1);
 }
 
 void atualizar_registro_page()

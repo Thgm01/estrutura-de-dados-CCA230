@@ -30,6 +30,6 @@ void libera_lista(Lista *lista);
 
 Registro *acha_registro(Lista *lista, const char *info);
 int remove_registro(Lista *lista, const char *info);
-void edita_registro(ELista *registro, const int opt);
+// void edita_registro(ELista *registro, const int opt);
 
 #endif

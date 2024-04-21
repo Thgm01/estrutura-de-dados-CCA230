@@ -47,3 +47,39 @@ void mostra_rg(Registro *registro)
 {
     printf(" - %s\n", registro->rg);
 }
+
+void edita_registro(Registro *registro, const int opt)
+{
+    if(registro != NULL)
+    {
+        switch (opt)
+        {
+            case 1:
+            {
+                char *novo_nome = recebe_nome(); 
+                registro->nome = realloc(registro->nome, strlen(novo_nome)*sizeof(char));
+                strcpy(registro->nome, novo_nome);
+
+                free(novo_nome);
+                break;
+            }
+            case 2:
+                registro->idade = recebe_idade();
+                break;
+            
+            case 3:
+            {
+                char *novo_rg = recebe_rg();
+                strcpy(registro->rg, novo_rg);
+
+                free(novo_rg);
+                break;
+            }
+
+        }
+    }
+    else
+    {
+        printf("Paciente Não Encontrado");
+    }
+}

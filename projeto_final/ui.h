@@ -75,6 +75,7 @@ void cadastro_page();
 void cadastrado_page();
 void consultar_page();
 void atualizar_registro_page();
+void registro_atualizado_page();
 void mostrar_todos_registros_header();
 
 void get_opt(int *opt, const enum Pagina *pagina);
