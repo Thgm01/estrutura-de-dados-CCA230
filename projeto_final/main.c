@@ -151,6 +151,10 @@ int main()
         desenfileirar_registro(pacientes, atendimentos);
         break;
 
+      case MOSTRAR_FILA:
+        mostrar_toda_fila(atendimentos);
+        break;
+
       case SOBRE:
         authors_info();
         break;

@@ -92,6 +92,8 @@ void desenfileirar_page();
 void registro_desenfileirado_page();
 void registro_desenfileirado_cancelado();
 void mostrar_todos_registros_header();
+void mostrar_fila_header();
+
 
 void get_opt(int *opt, const enum Pagina *pagina);
 void change_page(int *opt, enum Pagina *pagina);
@@ -106,8 +108,10 @@ void consultar_paciente(Lista *lista);
 void mostrar_todos_registros(Lista *lista);
 void atualizar_registro(Lista *lista);
 void remover_registro(Lista *lista);
+
 void enfileirar_registro(Lista *lista, Fila *fila);
 void desenfileirar_registro(Lista *lista, Fila *fila);
+void mostrar_toda_fila(Fila *fila);
 
 
 #endif

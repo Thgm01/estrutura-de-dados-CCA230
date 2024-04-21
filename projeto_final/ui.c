@@ -317,7 +317,7 @@ void get_opt(int *opt, const enum Pagina *pagina)
         break;
     }
 
-    if (*pagina == SOBRE || *pagina == CADASTRO || *pagina == CONSULTAR || *pagina == MOSTRAR_PACIENTES || *pagina == ATUALIZAR || *pagina == REMOVER || *pagina == ENFILEIRAR || *pagina == DESENFILEIRAR)
+    if (*pagina == SOBRE || *pagina == CADASTRO || *pagina == CONSULTAR || *pagina == MOSTRAR_PACIENTES || *pagina == ATUALIZAR || *pagina == REMOVER || *pagina == ENFILEIRAR || *pagina == DESENFILEIRAR || *pagina == MOSTRAR_FILA)
     {
         getchar();
         return;
@@ -378,6 +378,7 @@ void change_page(int *opt, enum Pagina *pagina)
     }
     case ENFILEIRAR:
     case DESENFILEIRAR:
+    case MOSTRAR_FILA:
         *pagina = ATENDIMENTOS;
         break;
 
@@ -551,7 +552,6 @@ void authors_info()
 
 void mostrar_todos_registros(Lista *lista)
 {
-    clear_screen();
     mostrar_todos_registros_header();
 
     if(lista->qtd != 0)
@@ -573,13 +573,11 @@ void mostrar_todos_registros(Lista *lista)
     }
     
     draw_botton_line(SIZE_MENU, 1);
-
-
-
 }
 
 void mostrar_todos_registros_header()
 {
+    clear_screen();
     draw_top_line(SIZE_MENU, 1);
     draw_blank_line(SIZE_MENU);
     center_text(SIZE_MENU, "TODOS OS PACIENTES", 1);
@@ -872,5 +870,44 @@ void registro_desenfileirado_cancelado()
     draw_line_cross(SIZE_MENU, 1);
     center_text(SIZE_MENU, "REMOCAO DO PACIENTE CANCELADA", 1);
     draw_botton_line(SIZE_MENU, 1);
+
+}
+
+void mostrar_toda_fila(Fila *fila)
+{
+    mostrar_fila_header();
+
+    if(fila->qtd != 0)
+    {
+        EFila *atual = fila->head;
+
+        for(int i=0; i < (fila->qtd/2)+(fila->qtd%2); i++)
+        {
+            Registro * paciente1 = atual->dados;
+            Registro * paciente2;
+            if(atual->proximo != NULL) paciente2 = atual->proximo->dados;
+            else paciente2 = NULL;
+            
+            mostra_registro2(paciente1, paciente2);
+
+            if(paciente2 == NULL) break;
+            atual = atual->proximo->proximo;
+        }
+    }
+    
+    draw_botton_line(SIZE_MENU, 1);
+
+
+}
+
+void mostrar_fila_header()
+{
+    clear_screen();
+    draw_top_line(SIZE_MENU, 1);
+    draw_blank_line(SIZE_MENU);
+    center_text(SIZE_MENU, "TODOS OS PACIENTES NA FILA", 1);
+    draw_blank_line(SIZE_MENU);
+    draw_line_cross(SIZE_MENU, 1);
+    draw_blank_line(SIZE_MENU);
 
 }
