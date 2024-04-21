@@ -273,8 +273,6 @@ void atendimento_menu_options()
     center_text(SIZE_MENU, "4 - Voltar                    ",1);  
 }
 
-
-
 void cadastrado_page()
 {
     clear_screen();
