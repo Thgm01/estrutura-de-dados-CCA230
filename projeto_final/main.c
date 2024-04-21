@@ -10,6 +10,7 @@ int main()
 {
 
   Lista *pacientes = le_arquivo();
+  Fila *atendimentos = cria_fila();
 
   // Registro *paciente = acha_registro(pacientes, "Thiago Moura");
   // Registro *paciente2 = acha_registro(pacientes, "Lucas Lagoeiro");
@@ -142,6 +143,9 @@ int main()
         atendimentos_page();
         break;
 
+      case ENFILEIRAR:
+        enfielirar_registro(pacientes, atendimentos);
+        break;
       case SOBRE:
         authors_info();
         break;

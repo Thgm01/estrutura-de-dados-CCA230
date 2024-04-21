@@ -2,6 +2,7 @@
 
 #include "utils.h"
 #include "lista.h"
+#include "fila.h"
 
 void draw_menu_header(char* title)
 {
@@ -318,7 +319,7 @@ void get_opt(int *opt, const enum Pagina *pagina)
         break;
     }
 
-    if (*pagina == SOBRE || *pagina == CADASTRO || *pagina == CONSULTAR || *pagina == MOSTRAR_PACIENTES || *pagina == ATUALIZAR || *pagina == REMOVER)
+    if (*pagina == SOBRE || *pagina == CADASTRO || *pagina == CONSULTAR || *pagina == MOSTRAR_PACIENTES || *pagina == ATUALIZAR || *pagina == REMOVER || *pagina == ENFILEIRAR)
     {
         getchar();
         return;
@@ -377,6 +378,9 @@ void change_page(int *opt, enum Pagina *pagina)
         *opt = 1;
         break;
     }
+    case ENFILEIRAR:
+        *pagina = ATENDIMENTOS;
+        break;
 
     case SOBRE:
         *pagina = INICIAL;
@@ -397,7 +401,7 @@ void change_page(int *opt, enum Pagina *pagina)
 
 void consultar_paciente(Lista *lista)
 {
-    consultar_page();
+    enfileirar_page();
 
     char *info;
     draw_spaces(SIZE_MENU/2 - 12);
@@ -679,6 +683,11 @@ void remover_registro(Lista *lista)
     mostra_registro2(registro, NULL);
     draw_blank_line(SIZE_MENU);
     draw_line_cross(SIZE_MENU, 1);
+    draw_blank_line(SIZE_MENU);
+    
+    char buffer[100];
+    sprintf(buffer, "Confirmar Remocao de %s?", registro->nome);
+    center_text(SIZE_MENU, buffer, 1);
     confirmar_remover_page();
 
     draw_spaces(SIZE_MENU/2 - 7);
@@ -719,7 +728,86 @@ void registro_removido_page()
 
 void confirmar_remover_page()
 {
+    draw_blank_line(SIZE_MENU);
+
     center_text(SIZE_MENU, "1 - SIM",1);
     center_text(SIZE_MENU, "2 - NAO",1);
+    draw_blank_line(SIZE_MENU);
     draw_botton_line(SIZE_MENU, 1);
+}
+
+void enfielirar_registro(Lista *lista, Fila *fila)
+{
+    consultar_page();
+
+    char *info;
+    draw_spaces(SIZE_MENU/2 - 12);
+    printf("Nome ou RG: ");
+    info = stdin_dinamico();
+
+    Registro *registro = acha_registro(lista, info);
+    
+    if(registro == NULL)
+    {
+        draw_spaces(SIZE_MENU/2 - (24+strlen(info))/2);
+        printf("Paciente %s nao encontrado\n", info);
+        free(info);
+        return;
+    }
+    free(info);
+
+    draw_top_line(SIZE_MENU, 1);
+    draw_blank_line(SIZE_MENU);
+    mostra_registro2(registro, NULL);
+    draw_blank_line(SIZE_MENU);
+    draw_line_cross(SIZE_MENU, 1);
+    draw_blank_line(SIZE_MENU);
+
+
+    char buffer[100];
+    sprintf(buffer, "Confirmar agendamento de %s?", registro->nome);
+    center_text(SIZE_MENU, buffer, 1);
+    confirmar_remover_page();
+    
+    draw_spaces(SIZE_MENU/2 - 7);
+    int opt;
+    printf("OPÇÂO: ");
+    scanf("%d", &opt);
+    getchar();
+
+    if(opt == 1)
+    {
+        registro_enfileirado_page();
+        enfileirar(fila, registro);
+        mostra_fila(fila);
+    }
+    else if(opt == 2) agendamento_cancelado_page();
+}
+
+void agendamento_cancelado_page()
+{
+    clear_screen();
+    draw_menu_header("Hospital Universitario FEI");
+    draw_line_cross(SIZE_MENU, 1);
+    center_text(SIZE_MENU, "AGENDAMENTO CANCELADO", 1);
+    draw_botton_line(SIZE_MENU, 1);
+}
+
+void registro_enfileirado_page()
+{
+    clear_screen();
+    draw_menu_header("Hospital Universitario FEI");
+    draw_line_cross(SIZE_MENU, 1);
+    center_text(SIZE_MENU, "REGISTRO AGENDADO COM SUCESSO", 1);
+    draw_botton_line(SIZE_MENU, 1);
+}
+
+void enfileirar_page()
+{
+    clear_screen();
+    draw_menu_header("Hospital Universitario FEI");
+    draw_line_cross(SIZE_MENU, 1);
+    center_text(SIZE_MENU, "ADICIONAR PACIENTE NA FILA", 1);
+    draw_botton_line(SIZE_MENU, 1);
+
 }

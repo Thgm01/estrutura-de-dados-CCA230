@@ -6,6 +6,7 @@
 
 #include "lista.h"
 #include "registro.h"
+#include "fila.h"
 
 #define SIZE_MENU 160
 #define SIZE_TASK (SIZE_MENU/2 - 2)
@@ -64,9 +65,6 @@ void draw_space_registro(int qtd);
 void draw_spaces(int size);
 void draw_task_titles(int qnt_tasks, char ** titles);
 void draw_registro_cross(int qnt_tasks);
-void write_descriptions(int qnt_tasks, char ** descriptions);
-void write_date(int qnt_tasks, char ** inicial_dates, char** final_dates);
-void write_status(int qnt_tasks, int *status);
 void draw_botton_registo(int qnt_tasks);
 void clear_screen();
 
@@ -87,7 +85,9 @@ void remove_registro_page();
 void confirmar_remover_page();
 void registro_removido_page();
 void remocao_cancelada_page();
-
+void enfileirar_page();
+void registro_enfileirado_page();
+void agendamento_cancelado_page();
 void mostrar_todos_registros_header();
 
 void get_opt(int *opt, const enum Pagina *pagina);
@@ -103,6 +103,7 @@ void consultar_paciente(Lista *lista);
 void mostrar_todos_registros(Lista *lista);
 void atualizar_registro(Lista *lista);
 void remover_registro(Lista *lista);
+void enfielirar_registro(Lista *lista, Fila *fila);
 
 
 
