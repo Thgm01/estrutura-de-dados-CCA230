@@ -121,38 +121,3 @@ int remove_registro(Lista *lista, const char *info)
 
     return 1;
 }
-
-// void edita_registro(ELista *registro, const int opt)
-// {
-//     if(registro != NULL)
-//     {
-//         switch (opt)
-//         {
-//             case 1:
-//             {
-//                 char *novo_nome = recebe_nome(); 
-//                 registro->dados->nome = realloc(registro->dados->nome, strlen(novo_nome)*sizeof(char));
-//                 strcpy(registro->dados->nome, novo_nome);
-
-//                 free(novo_nome);
-//                 break;
-//             }
-//             case 2:
-//             {
-//                 char *novo_rg = recebe_rg();
-//                 strcpy(registro->dados->rg, novo_rg);
-
-//                 free(novo_rg);
-//                 break;
-//             }
-//             case 3:
-//                 registro->dados->idade = recebe_idade();
-//                 break;
-//         }
-//     }
-//     else
-//     {
-//         printf("Paciente Não Encontrado");
-//     }
-// }
-
