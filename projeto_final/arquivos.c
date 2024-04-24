@@ -70,6 +70,25 @@ int salva_arquivo(Lista *lista) //salva novamente todos os dados dos pacientes e
   }
 
   fclose(arquivo);
+
+  
+  Lista *pacientes = le_arquivo();
+
+  arquivo = fopen("dados.txt", "w");
+
+  if(arquivo == NULL) return 0;
+
+  atual = pacientes->inicio;
+
+  while(atual != NULL)
+  {
+    fprintf(arquivo, "%s;%d;%s;%d;%d;%d\n", atual->dados->nome, atual->dados->idade, atual->dados->rg, atual->dados->entrada.dia, atual->dados->entrada.mes, atual->dados->entrada.ano);
+    atual = atual->proximo;
+  }
+
+  fclose(arquivo);
+
+  libera_lista(pacientes);
   
   return 1;
 }

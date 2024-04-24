@@ -175,6 +175,7 @@ int main()
   salva_arquivo(pacientes);
 
   libera_lista(pacientes);
+  libera_fila(atendimentos);
   
   // // Lista *l = cria_lista();
 
