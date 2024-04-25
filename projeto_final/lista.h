@@ -21,15 +21,16 @@ typedef struct
 }Lista;
 
 ELista *cria_elemento_lista();
-void libera_elemento(ELista *elemento);
+void libera_elemento(ELista *elemento, int libera_registro);
 
 Lista *cria_lista();
 void cadastrar_novo_paciente(Lista *lista);
 void mostra_lista(Lista *lista, const int opt);
-void libera_lista(Lista *lista);
+void libera_lista(Lista *lista, int libera_pont, int libera_registro);
+Lista *inverte_lista(Lista *lista);
 
 Registro *acha_registro(Lista *lista, const char *info);
 int remove_registro(Lista *lista, const char *info);
-// void edita_registro(ELista *registro, const int opt);
+void inserir_na_lista(Lista *lista, Registro *registro);
 
 #endif

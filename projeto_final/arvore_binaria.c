@@ -25,16 +25,6 @@ ArvoreBinaria *criar_arvore()
     return arvore_binaria;
 }
 
-void in_ordem(Vertice *raiz) //arrumar e passar pro ui.c
-{
-    if(raiz != NULL)
-    {
-        in_ordem(raiz->f_esq);
-        mostra_registro(raiz->registro);
-        in_ordem(raiz->f_dir);
-    }
-}
-
 void inserir_por_data(ArvoreBinaria *ab, Registro *registro)
 {
     Vertice *novo_vertice = criar_vertice(registro);

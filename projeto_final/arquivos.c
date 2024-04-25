@@ -86,9 +86,6 @@ int salva_arquivo(Lista *lista) //salva novamente todos os dados dos pacientes e
     atual = atual->proximo;
   }
 
-  fclose(arquivo);
-
-  libera_lista(pacientes);
-  
+  fclose(arquivo); 
   return 1;
 }

@@ -77,6 +77,14 @@ int main()
       case PESQUISA:
         pesquisa_page();
         break;
+
+      case MOSTRAR_ORDEM_DATA:
+        // mostrar_ordem(pacientes, 0);
+        break;
+      
+      case MOSTRAR_ORDEM_IDADE:
+        mostrar_ordem(pacientes, 1);
+        break;
       
       case SOBRE:
         authors_info();
@@ -97,7 +105,7 @@ int main()
   
   salva_arquivo(pacientes);
 
-  libera_lista(pacientes);
+  libera_lista(pacientes, 1, 1);
   libera_fila(atendimentos);
 
 }

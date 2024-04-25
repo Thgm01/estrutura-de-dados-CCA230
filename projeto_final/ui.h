@@ -7,6 +7,7 @@
 #include "lista.h"
 #include "registro.h"
 #include "fila.h"
+#include "arvore_binaria.h"
 
 #define SIZE_MENU 160
 #define SIZE_TASK (SIZE_MENU/2 - 2)
@@ -118,5 +119,7 @@ void enfileirar_registro(Lista *lista, Fila *fila);
 void desenfileirar_registro(Lista *lista, Fila *fila);
 void mostrar_toda_fila(Fila *fila);
 
+void mostrar_ordem(Lista *lista, int por_idade);
+void in_ordem(Vertice *raiz, Lista *lista);
 
 #endif

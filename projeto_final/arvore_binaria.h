@@ -25,8 +25,6 @@ typedef struct
 Vertice *criar_vertice(Registro *registro);
 ArvoreBinaria *criar_arvore();
 
-void in_ordem(Vertice *raiz);
-
 void inserir_por_data(ArvoreBinaria *ab, Registro *registro);
 void inserir_por_idade(ArvoreBinaria *ab, Registro *registro);
 ArvoreBinaria *inserir_todos_registros(Lista *lista, int por_idade);

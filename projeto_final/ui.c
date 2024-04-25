@@ -417,6 +417,7 @@ void change_page(int *opt, enum Pagina *pagina)
     case MOSTRAR_ORDEM_IDADE:
     case MOSTRAR_ORDEM_DATA:
         *pagina = PESQUISA;
+        break;
 
     case SOBRE:
         *pagina = INICIAL;
@@ -946,4 +947,37 @@ void mostrar_fila_header()
     draw_line_cross(SIZE_MENU, 1);
     draw_blank_line(SIZE_MENU);
 
+}
+
+void mostrar_ordem(Lista *lista, int por_idade)
+{
+    ArvoreBinaria *arvore = inserir_todos_registros(lista, por_idade);
+
+    Lista *lista_ordenada = cria_lista();
+
+    printf("%p\n", lista_ordenada);
+
+    in_ordem(arvore->raiz, lista_ordenada);
+    lista_ordenada = inverte_lista(lista_ordenada);
+
+    printf("%p\n", lista_ordenada);
+    printf("%s\n", lista_ordenada->inicio->dados->nome);
+    
+    
+    mostrar_todos_registros(lista_ordenada);
+
+    libera_lista(lista_ordenada, 1, 0);
+}
+
+
+void in_ordem(Vertice *raiz, Lista *lista) //arrumar e passar pro ui.c
+{
+    
+    if(raiz != NULL)
+    {
+        in_ordem(raiz->f_esq, lista);
+        inserir_na_lista(lista, raiz->registro);
+        // mostra_registro(raiz->registro);
+        in_ordem(raiz->f_dir, lista);
+    }
 }
