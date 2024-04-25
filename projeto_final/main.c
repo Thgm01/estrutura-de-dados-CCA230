@@ -11,10 +11,6 @@ int main()
 {
 
   Lista *pacientes = le_arquivo();
-  // ArvoreBinaria *buscar_idade =  inserir_todos_registros(pacientes, 1);
-
-  // in_ordem(buscar_idade->raiz);
-  
 
   Fila *atendimentos = cria_fila();
 
@@ -79,7 +75,7 @@ int main()
         break;
 
       case MOSTRAR_ORDEM_DATA:
-        // mostrar_ordem(pacientes, 0);
+        mostrar_ordem(pacientes, 0);
         break;
       
       case MOSTRAR_ORDEM_IDADE:

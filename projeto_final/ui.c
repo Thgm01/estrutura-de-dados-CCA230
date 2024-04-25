@@ -959,10 +959,6 @@ void mostrar_ordem(Lista *lista, int por_idade)
 
     in_ordem(arvore->raiz, lista_ordenada);
     lista_ordenada = inverte_lista(lista_ordenada);
-
-    printf("%p\n", lista_ordenada);
-    printf("%s\n", lista_ordenada->inicio->dados->nome);
-    
     
     mostrar_todos_registros(lista_ordenada);
 
