@@ -75,11 +75,11 @@ char * stdin_dinamico()
 
 int num_filhos(Vertice *v)
 {
-    int num = 0; 
-    if(v->f_esq) num++;
-    if(v->f_dir) num++;
+  int num = 0; 
+  if(v->f_esq) num++;
+  if(v->f_dir) num++;
 
-    return num;
+  return num;
 }
 
 int e_filho_esq(Vertice *v)
@@ -99,3 +99,20 @@ Vertice *acha_filho_direito(Vertice *v)
   }
   return pai;
 }
+
+int data_maior(Data data1, Data data2)
+{
+  if(data1.ano > data2.ano) return 1;
+  else if(data1.ano < data2.ano) return 2;
+  else
+  {
+    if(data1.mes > data2.mes) return 1;
+    else if(data1.mes < data2.mes) return 2;
+    else
+    {
+      if(data1.dia > data2.dia) return 1;
+      else return 2;
+    }
+  }
+}
+

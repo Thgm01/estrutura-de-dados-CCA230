@@ -5,6 +5,7 @@
 #include <stdlib.h>
 
 #include "registro.h"
+#include "utils.h"
 
 typedef struct Vertice
 {
@@ -24,5 +25,8 @@ typedef struct
 
 Vertice *criar_vertice(Registro *registro);
 ArvoreBinaria *criar_arvore();
+
+void inserir_por_entrada(ArvoreBinaria *ab, Registro *registro);
+void inserir_por_idade(ArvoreBinaria *ab, Registro *registro);
 
 #endif 

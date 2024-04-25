@@ -18,5 +18,9 @@ Data recebe_data();
 struct tm * recebe_dia_atual();
 char * stdin_dinamico();
 
+Vertice *acha_filho_direito(Vertice *v);
+int e_filho_esq(Vertice *v);
+int num_filhos(Vertice *v);
+int data_maior(Data data1, Data data2);
 
 #endif
