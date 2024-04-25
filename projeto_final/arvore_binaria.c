@@ -1,5 +1,7 @@
 #include "arvore_binaria.h"
 
+#include "utils.h"
+
 Vertice *criar_vertice(Registro *registro)
 {
     Vertice *vertice = malloc(sizeof(Vertice));
@@ -23,17 +25,17 @@ ArvoreBinaria *criar_arvore()
     return arvore_binaria;
 }
 
-// void in_ordem(Vertice *raiz) //arrumar e passar pro ui.c
-// {
-//     if(raiz != NULL)
-//     {
-//         in_ordem(raiz->f_esq);
-//         printf("%d ", raiz->valor);
-//         in_ordem(raiz->f_dir);
-//     }
-// }
+void in_ordem(Vertice *raiz) //arrumar e passar pro ui.c
+{
+    if(raiz != NULL)
+    {
+        in_ordem(raiz->f_esq);
+        mostra_registro(raiz->registro);
+        in_ordem(raiz->f_dir);
+    }
+}
 
-void inserir_por_entrada(ArvoreBinaria *ab, Registro *registro)
+void inserir_por_data(ArvoreBinaria *ab, Registro *registro)
 {
     Vertice *novo_vertice = criar_vertice(registro);
 
@@ -42,7 +44,7 @@ void inserir_por_entrada(ArvoreBinaria *ab, Registro *registro)
 
     if(atual == NULL)
     {
-        ab->raiz = registro;
+        ab->raiz = novo_vertice;
         return;
     }
 
@@ -82,7 +84,7 @@ void inserir_por_idade(ArvoreBinaria *ab, Registro *registro)
 
     if(atual == NULL)
     {
-        ab->raiz = registro;
+        ab->raiz = novo_vertice;
         return;
     }
 
@@ -114,3 +116,27 @@ void inserir_por_idade(ArvoreBinaria *ab, Registro *registro)
 
 }
 
+ArvoreBinaria *inserir_todos_registros(Lista *lista, int por_idade)
+{
+    ArvoreBinaria *arvore = criar_arvore();
+
+    ELista *atual = lista->inicio;
+    if(atual == NULL) return arvore;
+
+    ELista *aux = atual->proximo;
+
+    while(aux != NULL)
+    {
+        if(por_idade) inserir_por_idade(arvore, atual->dados);
+        else inserir_por_data(arvore, atual->dados);
+
+        atual = aux;
+        aux = atual->proximo;
+    }
+
+    if(por_idade) inserir_por_idade(arvore, atual->dados);
+    else inserir_por_data(arvore, atual->dados);
+
+    return arvore;
+
+}

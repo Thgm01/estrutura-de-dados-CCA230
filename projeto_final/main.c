@@ -1,5 +1,6 @@
 #include "lista.h"
 #include "arquivos.h"
+#include "arvore_binaria.h"
 #include "fila.h"
 #include "ui.h"
 
@@ -10,96 +11,12 @@ int main()
 {
 
   Lista *pacientes = le_arquivo();
+  // ArvoreBinaria *buscar_idade =  inserir_todos_registros(pacientes, 1);
+
+  // in_ordem(buscar_idade->raiz);
+  
+
   Fila *atendimentos = cria_fila();
-
-  // Registro *paciente = acha_registro(pacientes, "Thiago Moura");
-  // Registro *paciente2 = acha_registro(pacientes, "Lucas Lagoeiro");
-  
-  
-
-
-  // consultar_page();
-  // mostra_registro2(paciente, paciente2);
-  // draw_botton_line(SIZE_MENU, 1);
-  // mostra_registro(paciente);
-
-  // draw_top_line(SIZE_MENU, 1);
-  // draw_top_registro(1);
-
-
-  // draw_nome_registro(paciente->nome, 0);
-  // draw_empty_registro();
-  // draw_registro_cross(1);
-
-  // char dado[SIZE_TASK];
-
-
-  // draw_vertical_line(1);
-  // sprintf(dado, "Idade: %d", paciente->idade);
-  // draw_vertical_line(1);
-  // draw_spaces(SIZE_TASK/2 - 5);
-  // printf("%s", dado);
-  // draw_spaces(SIZE_TASK/2 + 5 - strlen(dado));
-  // draw_vertical_line(1);
-  // draw_empty_registro();
-
-  // draw_vertical_line(1);
-  // sprintf(dado, "RG: %s", paciente->rg);
-  // draw_vertical_line(1);
-  // draw_spaces(SIZE_TASK/2 - 5);
-  // printf("%s", dado);
-  // draw_spaces(SIZE_TASK/2 + 5 - strlen(dado));
-  // draw_vertical_line(1);
-  // draw_empty_registro();
-
-  // draw_vertical_line(1);
-  // sprintf(dado, "Entrada: %d/%d/%d", paciente->entrada.dia, paciente->entrada.mes, paciente->entrada.ano);
-  // draw_vertical_line(1);
-  // draw_spaces(SIZE_TASK/2 - 5);
-  // printf("%s", dado);
-  // draw_spaces(SIZE_TASK/2 + 5 - strlen(dado));
-  // draw_vertical_line(1);
-  // draw_empty_registro();
-
-  // draw_botton_registo(2);
-
-
-
-  // draw_vertical_line(1);
-  // sprintf(dado, "RG: %s", paciente->rg);
-  // center_text(SIZE_TASK, dado, 0);
-  // draw_empty_registro();
-
-  // draw_vertical_line(1);
-  // sprintf(dado, "%d/%d/%d", paciente->entrada.dia, paciente->entrada.mes, paciente->entrada.ano);
-  // center_text(SIZE_TASK, dado, 0);
-  // draw_empty_registro();
-
-
-
-
-  
-
-
-
-
-
-
-
-
-
-  
-
-  // draw_vertical_line(1);
-  // center_text(SIZE_TASK, paciente->nome, 0);
-  // draw_spaces(160 - (SIZE_TASK+2));
-  // draw_vertical_line(1);
-  // new_line();
-  // draw_registro_cross(1);
-
-  //getchar();
-
-
 
   int opt = 1;
   enum Pagina pagina = INICIAL;
@@ -139,6 +56,7 @@ int main()
         remover_registro(pacientes);
         break;
 
+      
       case ATENDIMENTOS:
         atendimentos_page();
         break;
@@ -155,6 +73,11 @@ int main()
         mostrar_toda_fila(atendimentos);
         break;
 
+      
+      case PESQUISA:
+        pesquisa_page();
+        break;
+      
       case SOBRE:
         authors_info();
         break;
@@ -176,59 +99,5 @@ int main()
 
   libera_lista(pacientes);
   libera_fila(atendimentos);
-  
-  // // Lista *l = cria_lista();
 
-  // // cadastrar_novo_paciente(l);
-  // // system("clear");
-  // // mostra_lista(l, 0);
-  // // cadastrar_novo_paciente(l);
-  // // mostra_lista(l, 0);
-  // // cadastrar_novo_paciente(l);
-  // // mostra_lista(l, 1);
-  // // cadastrar_novo_paciente(l);
-  // // mostra_lista(l, 2);
-  
-  // // system("clear");
-
-  // // mostra_lista(l,0);
-  // // char *rg = "0987";
-  // // printf("\n\nRegistro com nome de: %s\n", rg);
-
-  // // mostra_registro(acha_registro(l, rg)->dados); // FAZER IF ANTES PARA NN DAR NULL->DADOS (erro)
-
-  // // limpa_lista(l);
-
-  // Lista *l = le_arquivo();
-  // Fila *f = cria_fila();
-
-  // mostra_lista(l, 0);
-
-  // //cadastrar_novo_paciente(l);
-  // enfileirar(f, acha_registro(l, "Thiago Moura"));
-  // enfileirar(f, acha_registro(l, "Lucas Lagoeiro"));
-  // //edita_registro(acha_registro(l, "1234"), 1);
-  
-
-  // system("clear");
-
-  // mostra_fila(f);
-
-  // getchar();
-
-  // system("clear");
-
-  // mostra_registro(desenfileirar(f));
-
-  // getchar();
-
-  // system("clear");
-
-  // mostra_fila(f);
-
-  // libera_fila(f); 
-  
-  // salva_arquivo(l);
-
-  // return 0;
 }

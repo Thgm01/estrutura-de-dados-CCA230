@@ -41,6 +41,9 @@ enum Pagina
     MOSTRAR_FILA,
 
     PESQUISA,
+    MOSTRAR_ORDEM_IDADE,
+    MOSTRAR_ORDEM_DATA,
+
     SOBRE
 };
 
@@ -71,6 +74,7 @@ void clear_screen();
 void draw_initial_options();
 void draw_registros_options();
 void atendimento_menu_options();
+void pesquisa_options();
 
 
 void initial_page();
@@ -90,6 +94,7 @@ void registro_enfileirado_page();
 void agendamento_cancelado_page();
 void desenfileirar_page();
 void registro_desenfileirado_page();
+void pesquisa_page();
 void registro_desenfileirado_cancelado();
 void mostrar_todos_registros_header();
 void mostrar_fila_header();

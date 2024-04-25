@@ -265,6 +265,24 @@ void atendimentos_page()
     draw_botton_line(SIZE_MENU, 1);
 }
 
+void pesquisa_page()
+{
+    clear_screen();
+    draw_menu_header("Hospital Universitario FEI");
+    pesquisa_options();
+}
+
+void pesquisa_options()
+{
+    draw_line_cross(SIZE_MENU, 1);
+    draw_blank_line(SIZE_MENU);
+    center_text(SIZE_MENU, "1 - Mostar Registros Ordenados por Idade         ",1);
+    center_text(SIZE_MENU, "2 - Mostar Registros Ordenados por Data de Castro",1);
+    center_text(SIZE_MENU, "3 - Voltar                                       ",1); 
+    draw_blank_line(SIZE_MENU);
+    draw_botton_line(SIZE_MENU, 1);
+}
+
 void atendimento_menu_options()
 {
     center_text(SIZE_MENU, "1 - Adicionar paciente na Fila",1);
@@ -310,14 +328,19 @@ void get_opt(int *opt, const enum Pagina *pagina)
     case ATENDIMENTOS:
         lim[0] = 1;
         lim[1] = 4;
+        break;
 
+    case PESQUISA:
+        lim[0] = 1;
+        lim[1] = 3;
+        break;
     default:
         lim[0] = 1;
-        lim[1] = 4;
+        lim[1] = 3;
         break;
     }
 
-    if (*pagina == SOBRE || *pagina == CADASTRO || *pagina == CONSULTAR || *pagina == MOSTRAR_PACIENTES || *pagina == ATUALIZAR || *pagina == REMOVER || *pagina == ENFILEIRAR || *pagina == DESENFILEIRAR || *pagina == MOSTRAR_FILA)
+    if (*pagina == SOBRE || *pagina == CADASTRO || *pagina == CONSULTAR || *pagina == MOSTRAR_PACIENTES || *pagina == ATUALIZAR || *pagina == REMOVER || *pagina == ENFILEIRAR || *pagina == DESENFILEIRAR || *pagina == MOSTRAR_FILA || *pagina == MOSTRAR_ORDEM_DATA || *pagina == MOSTRAR_ORDEM_IDADE)
     {
         getchar();
         return;
@@ -381,6 +404,19 @@ void change_page(int *opt, enum Pagina *pagina)
     case MOSTRAR_FILA:
         *pagina = ATENDIMENTOS;
         break;
+
+    case PESQUISA:
+        if      (*opt == 1) *pagina = MOSTRAR_ORDEM_IDADE;
+        else if (*opt == 2) *pagina = MOSTRAR_ORDEM_DATA;
+        else if (*opt == 3) *pagina = INICIAL;
+        else break;
+
+        *opt = 1;
+        break;
+
+    case MOSTRAR_ORDEM_IDADE:
+    case MOSTRAR_ORDEM_DATA:
+        *pagina = PESQUISA;
 
     case SOBRE:
         *pagina = INICIAL;

@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 #include "registro.h"
-#include "utils.h"
+#include "lista.h"
 
 typedef struct Vertice
 {
@@ -22,11 +22,13 @@ typedef struct
     int qtd;
 }ArvoreBinaria;
 
-
 Vertice *criar_vertice(Registro *registro);
 ArvoreBinaria *criar_arvore();
 
-void inserir_por_entrada(ArvoreBinaria *ab, Registro *registro);
+void in_ordem(Vertice *raiz);
+
+void inserir_por_data(ArvoreBinaria *ab, Registro *registro);
 void inserir_por_idade(ArvoreBinaria *ab, Registro *registro);
+ArvoreBinaria *inserir_todos_registros(Lista *lista, int por_idade);
 
 #endif 
