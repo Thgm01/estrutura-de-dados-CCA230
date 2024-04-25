@@ -72,3 +72,30 @@ char * stdin_dinamico()
 
   return buffer;
 }
+
+int num_filhos(Vertice *v)
+{
+    int num = 0; 
+    if(v->f_esq) num++;
+    if(v->f_dir) num++;
+
+    return num;
+}
+
+int e_filho_esq(Vertice *v)
+{
+  return v->pai->f_esq == v;
+}
+
+Vertice *acha_filho_direito(Vertice *v)
+{
+  Vertice *atual = v;
+  Vertice *pai = NULL;
+  
+  while(atual != NULL)
+  {
+    pai = atual;
+    atual = atual->f_dir;
+  }
+  return pai;
+}

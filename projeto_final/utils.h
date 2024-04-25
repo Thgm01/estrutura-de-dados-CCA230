@@ -3,6 +3,7 @@
 
 #include "registro.h"
 #include "ui.h"
+#include "arvore_binaria.h"
 
 #include <stdio.h>
 #include <stdlib.h>
