@@ -574,15 +574,14 @@ void authors_info()
 
     draw_line_cross(SIZE_TASK, 1);
     draw_blank_line(SIZE_TASK);
-    center_text(SIZE_TASK, "Lucas Lagoeiro                       ", 1);
-    center_text(SIZE_TASK, "Engenharia de Robos, 7o Sem.         ", 1);
+    center_text(SIZE_TASK, "Luis F. N. Rotta                     ", 1);
+    center_text(SIZE_TASK, "Eng. de Controle e Automacao, 7o Sem.", 1);
     center_text(SIZE_TASK, "Centro Universitario FEI, 2024       ", 1);
-    center_text(SIZE_TASK, "https://github.com/LucasLagoeiro     ", 1);
     draw_blank_line(SIZE_TASK);
 
     draw_line_cross(SIZE_TASK, 1);
     draw_blank_line(SIZE_TASK);
-    center_text(SIZE_TASK, "Presione qualquer tecla para voltar (menos Crtl+C)", 1);
+    center_text(SIZE_TASK, "Presione Enter para voltar", 1);
     draw_blank_line(SIZE_TASK);
     draw_botton_line(SIZE_TASK, 1);
 }
