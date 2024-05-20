@@ -1,8 +1,8 @@
-#include "ui.h"
+#include "include/ui.h"
 
-#include "utils.h"
-#include "lista.h"
-#include "fila.h"
+#include "include/utils.h"
+#include "include/lista.h"
+#include "include/fila.h"
 
 void draw_menu_header(char* title)
 {

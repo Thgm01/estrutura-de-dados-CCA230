@@ -1,9 +1,9 @@
-#include "registro.h"
-#include "utils.h"
+#include "include/registro.h"
+#include "include/utils.h"
 #include <stdlib.h>
 #include <stdio.h>
 
-Registro *cria_registro()
+Registro *cria_registro() //Cria um registro alocando dinamicamente as informações
 {
     Registro *novo_registro = malloc(sizeof(Registro));
     novo_registro->nome     = recebe_nome();
@@ -14,14 +14,14 @@ Registro *cria_registro()
     return novo_registro;
 }
 
-void limpa_registro(Registro *registro)
+void limpa_registro(Registro *registro) //libera da memoria os registros
 {
     free(registro->nome);
     free(registro->rg);
     free(registro);
 }
 
-void mostra_registro(Registro *registro)
+void mostra_registro(Registro *registro) //função protótipo para mostrar os registros
 {
     if(registro != NULL)
     {
@@ -57,7 +57,7 @@ void edita_registro(Registro *registro, const int opt)
             case 1:
             {
                 char *novo_nome = recebe_nome(); 
-                registro->nome = realloc(registro->nome, strlen(novo_nome)*sizeof(char));
+                registro->nome = realloc(registro->nome, strlen(novo_nome)*sizeof(char)); //realoca o tamanho da string dinamicamente
                 strcpy(registro->nome, novo_nome);
 
                 free(novo_nome);

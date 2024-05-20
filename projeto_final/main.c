@@ -1,8 +1,8 @@
-#include "lista.h"
-#include "arquivos.h"
-#include "arvore_binaria.h"
-#include "fila.h"
-#include "ui.h"
+#include "include/lista.h"
+#include "include/arquivos.h"
+#include "include/arvore_binaria.h"
+#include "include/fila.h"
+#include "include/ui.h"
 
 #include <stdlib.h>
 #include <string.h>

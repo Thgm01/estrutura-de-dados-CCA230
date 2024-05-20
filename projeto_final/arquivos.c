@@ -1,6 +1,6 @@
-#include "arquivos.h"
-#include "lista.h"
-#include "registro.h"
+#include "include/arquivos.h"
+#include "include/lista.h"
+#include "include/registro.h"
 
 
 Lista *le_arquivo() // le arquivo com dados dos pacientes e adiciona em uma lista
@@ -71,7 +71,7 @@ int salva_arquivo(Lista *lista) //salva novamente todos os dados dos pacientes e
 
   fclose(arquivo);
 
-  
+  //ajuste técnico para salvar arquivo na ordem
   Lista *pacientes = le_arquivo();
 
   arquivo = fopen("dados.txt", "w");

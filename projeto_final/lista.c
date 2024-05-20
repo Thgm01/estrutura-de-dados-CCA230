@@ -1,6 +1,6 @@
-#include "lista.h"
+#include "include/lista.h"
 
-#include "utils.h"
+#include "include/utils.h"
 
 
 ELista *cria_elemento_lista()
